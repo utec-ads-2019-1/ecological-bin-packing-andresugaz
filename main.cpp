@@ -9,10 +9,12 @@ int arraySum(int a[9]);
 
 
 int main() 
-{ 
-    const char* lista2[6]={"BCG","CGB","GBC","CBG","BGC","GCB"};  
+{ 	
+const char* lista2[6]={"BCG","BGC","CBG","CGB","GBC","GCB"};  
+    //const char* lista2[6]={"BCG","CGB","GBC","CBG","BGC","GCB"};  
 int minimos[6]={0,0,0,0,0,0};
 int lista[9];
+
     
     while (scanf("%d", &lista[0])!=EOF)
     {
@@ -21,16 +23,15 @@ int lista[9];
         scanf("%d",&lista[i]);
     }
     
-    
     int suma = (arraySum(lista));
 	
 	//cout<<suma<<endl;
 
     		minimos[0]=suma-lista[0]-lista[5]-lista[7];
-    		minimos[1]=suma-lista[2]-lista[4]-lista[6];
-    		minimos[2]=suma-lista[1]-lista[3]-lista[8];
-			minimos[3]=suma-lista[2]-lista[3]-lista[7];
-			minimos[4]=suma-lista[0]-lista[4]-lista[8];
+    		minimos[3]=suma-lista[2]-lista[4]-lista[6];
+    		minimos[4]=suma-lista[1]-lista[3]-lista[8];
+			minimos[2]=suma-lista[2]-lista[3]-lista[7];
+			minimos[1]=suma-lista[0]-lista[4]-lista[8];
 			minimos[5]=suma-lista[1]-lista[5]-lista[6];
 
 	/*for (int z=0;z<9;z++)
@@ -38,13 +39,46 @@ int lista[9];
 		cout<<lista[z]<<" ";
 	}
 	cout<<endl;*/
+	int menorNRO = 1000000000;
 	for (int z=0;z<6;z++)
 	{
-		cout<<minimos[z]<<" ";
+		if (menorNRO>=minimos[z])
+		{
+			menorNRO=minimos[z];
+		}
+		//cout<<minimos[z]<<" ";
 	}
-	cout<<endl;
-    
-    }
+	int cont = 0;
+	
+	int menorINDEX;
+	int interruptor = 0;
+
+	for (int z=0;z<6;z++)
+	{	
+		if (interruptor == 1)
+		{
+			break;
+		}
+		if(minimos[z] == menorNRO)
+		{
+		menorINDEX = z;
+		interruptor = 1;
+		//cont=cont+1;
+		//cont=cont+1;
+		//interruptor = interruptor+1;
+		}
+	}
+	/*if (cont == 1)
+	{
+	    cout<<lista2[menorINDEX]<<" "<<menorNRO<<endl;   	
+	}
+	else
+	    cout<<lista2[menorINDEX]<<" "<<menorNRO<<endl;
+	//cout<<menorNRO<<endl;
+	
+    }*/
+    cout<<lista2[menorINDEX]<<" "<<menorNRO<<endl;
+}
     return 0;
 }
 
